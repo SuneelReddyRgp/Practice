@@ -34,21 +34,24 @@ public class LinkedListSolution {
     
     static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
     	
+    	SinglyLinkedListNode node = new SinglyLinkedListNode(data);
+    	
+    	SinglyLinkedListNode tempref = head;
     	
     	
-	    	if(head == null) {
-	    		return head;
+	    	if(tempref == null) {
+	    		return node;
 	    	}
-    		while(head.next != null) {
+    		while(tempref.next != null) {
     			//System.out.print(temp.head.data);
-    			head = head.next;
+    			tempref = tempref.next;
     			
     		}
     		 System.out.println("\n");
     		
-    		 head.next = new SinglyLinkedListNode(data);
-//    		 head.next.data = data;
+    		 tempref.next = node;
     		
+    		 
     		return head;
     		
     }
@@ -66,7 +69,7 @@ public class LinkedListSolution {
        // scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < 10; i++) {
-            int llistItem = r.nextInt(10);
+            int llistItem = i;
 //            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 //        	System.out.println(llistItem);
           SinglyLinkedListNode llist_head = insertNodeAtTail(llist.head, llistItem);
