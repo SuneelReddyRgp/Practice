@@ -33,10 +33,11 @@ public class InsertNodeInList {
             }
 
             this.tail = node;
+            System.out.println(nodeData);
         }
     }
 
-    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
+   /* public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
         while (node != null) {
             bufferedWriter.write(String.valueOf(node.data));
 
@@ -47,7 +48,7 @@ public class InsertNodeInList {
             }
         }
     }
-    
+    */
     // Complete the insertNodeAtPosition function below.
 
     /*
@@ -63,22 +64,25 @@ public class InsertNodeInList {
         SinglyLinkedListNode tempNode = head;
         SinglyLinkedListNode previousNode;
         SinglyLinkedListNode nodeData = new SinglyLinkedListNode(data);
-        SinglyLinkedListNode tempAddress;
+//        SinglyLinkedListNode tempAddress;
         
         if(position == 0){
-            nodeData.next = head.next;
+            nodeData.next = head;
             return nodeData;
         }
         else{
-            int i = 1;
+            int i = 0;
             previousNode = head;
             while(i != position){
                 i++;
-                tempNode = tempNode.next;
-                
+                if(tempNode!=null) {
+                	previousNode = tempNode;
+                    tempNode = tempNode.next;
+                }else {
+                	break;
+                }
             }
-            tempAddress = tempNode.next;
-            nodeData.next = tempAddress;
+            nodeData.next = tempNode;
             previousNode.next = nodeData;
         }
         
@@ -96,22 +100,23 @@ public class InsertNodeInList {
        // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         SinglyLinkedList llist = new SinglyLinkedList();
-        Random r = new Random();
-        int llistCount = r.nextInt(5);
+//        Random r = new Random();
+//        int llistCount = r.nextInt(5);
        // scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        for (int i = 0; i < llistCount; i++) {
-            int llistItem = r.nextInt(4);
+        for (int i = 0; i < 5; i++) {
+            int llistItem = i;
             //scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             llist.insertNode(llistItem);
         }
 
-        int data = r.nextInt(100);
+        int data = 6;
         //scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        int position = r.nextInt(4);
+        int position = 0;
         //scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
+        System.out.println("Position"+position);
+        System.out.println("Data"+data);
         SinglyLinkedListNode llist_head = insertNodeAtPosition(llist.head, data, position);
         
         if(llist_head != null) {
