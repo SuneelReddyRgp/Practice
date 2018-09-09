@@ -1,6 +1,11 @@
 package Internal;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LinkedListSolution {
 
@@ -64,6 +69,18 @@ public class LinkedListSolution {
         SinglyLinkedList llist = new SinglyLinkedList();
         
         Random r = new Random();
+        
+        @SuppressWarnings("unchecked")
+		ConcurrentHashMap<Integer, Integer> h = new ConcurrentHashMap<>();
+        h.put(1, 2);
+        h.put(2, 2);
+        h.put(3, 2);
+        
+        
+        Iterator<Integer> l = h.keySet().iterator();
+        
+        
+        
 
        // int llistCount = scanner.nextInt();
        // scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
